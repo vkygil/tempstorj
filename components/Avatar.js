@@ -54,6 +54,7 @@ export default function Avatar({ url, size, onUpload }) {
 
     return (
         <div>
+            <p>Heh</p>
             {avatarUrl ? (
                 <img
                     src={avatarUrl}
@@ -70,7 +71,7 @@ export default function Avatar({ url, size, onUpload }) {
                 </label>
                 <input
                     style={{
-                        visibility: 'hidden',
+                        // visibility: 'hidden',
                         position: 'absolute',
                     }}
                     type="file"

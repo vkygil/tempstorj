@@ -13,7 +13,7 @@ export default function Home() {
       </Head>
       <div className="form-widget">
         <Avatar
-          url={"https://gravatar.com/avatar/7cbc982dc26dc5690e0dd5e61c29ef81?s=400&d=robohash&r=x"}
+          // url={avatar_url}
           size={150}
           onUpload={(url) => {
             setAvatarUrl(url)
