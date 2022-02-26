@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Avatar from '../components/Avatar'
+import FileUpload from '../components/FileUpload'
 
 export default function Home() {
   return (
@@ -12,14 +13,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="form-widget">
-        <Avatar
+        <FileUpload />
+        {/* <form method='post' action='/api/upload-file' encType="multipart/form-data">
+          <input type='file' name='fileUploaded' />
+          <input type='submit' />
+        </form> */}
+
+        {/* <Avatar
           // url={avatar_url}
           size={150}
           onUpload={(url) => {
             setAvatarUrl(url)
             updateProfile({ username, website, avatar_url: url })
           }}
-        />
+        /> */}
       </div>
 
 
