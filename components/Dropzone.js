@@ -57,7 +57,7 @@ export default function Dropzone({ addFileToList }) {
                         </div>
                         :
                         <div className='dropzoned'>
-                            <img style={{ height: "40px", width: "auto", filter: "invert(1)" }} src='file-upload.svg'></img>
+                            <img style={{ height: "40px", width: "auto", filter: "invert(1)" }} src='static/file-upload.svg'></img>
                             <p>Arrastra los archivos aquí o haz clic aquí</p>
                         </div>
                 }
