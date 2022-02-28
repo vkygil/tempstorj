@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import '../styles/Home.module.css' 
+import '../styles/Home.module.css'
 import FileUpload from '../components/FileUpload'
 import Dropzone from '../components/Dropzone'
 import Switch from '../components/Switch'
@@ -8,9 +8,7 @@ import FilesList from '../components/FilesList'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
-  const [files, setFiles] = useState([{
-    name:"dd",code:"dd"
-  }])
+  const [files, setFiles] = useState([])
   const addFileToList = (newFile) => {
     setFiles(files => [...files, newFile]);
   };

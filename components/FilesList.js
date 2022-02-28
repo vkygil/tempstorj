@@ -1,7 +1,4 @@
 export default function FilesList({ files }) {
-    const copyToClipboard = (e) => {
-        console.log(e);
-    }
     return (
 
         <>
@@ -47,7 +44,7 @@ export default function FilesList({ files }) {
                         <div key={f.name} className="row">
                             <span>{f.name}</span>
                             {/* <span onClick={() => copyToClipboard(f.code)} className="fileLink">tmp.xyz/<b>{f.code}</b> <img className="logo" src="clipboard.svg"></img></span> */}
-                            <span onClick={() => { navigator.clipboard.writeText(f.code) }} className="fileLink">tmp.xyz/<b>{f.code}</b> <img className="logo" src="clipboard.svg"></img></span>
+                            <span onClick={() => { navigator.clipboard.writeText(window.location.host + "/" + f.code) }} className="fileLink">{window.location.host}/<b>{f.code}</b> <img className="logo" src="clipboard.svg"></img></span>
                         </div>
                     )
                 }

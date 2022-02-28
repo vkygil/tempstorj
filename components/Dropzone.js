@@ -7,7 +7,7 @@ export default function Dropzone({ addFileToList }) {
         const formData = new FormData();
         formData.append('file', selectorFile);
         fetch(
-            'http://localhost:3000/api/upload-file',
+            window.location.origin + '/api/upload-file',
             {
                 method: 'POST',
                 body: formData,

@@ -23,36 +23,17 @@ app.prepare().then(() => {
     server.use(express.json())
     server.use(express.urlencoded());
 
-    server.get('/api/test', async (req, res) => {
-        // const { user, session, error } = await supabase.auth.signIn({
-        //     email: 'user@email.com',
-        //     password: 'password',
-        // })
-        // const { data: user, error } = await supabase.auth.api.createUser({
-        //     email: 'user@email.com',
-        //     password: 'password',
-        //     data: { name: 'Yoda' }
-        // })
-
-        // console.log(user);
-        // console.log(error);
-        // supabase.from('countries')
-
-        //     .select('*')
-        //     .limit(5)
-        //     .then(console.log)
-        //     .catch(console.error)
-
-        res.send("ok api")
-    });
     server.get('/api/download-file/:code', async (req, res) => {
         const { data, fileOriginalName } = await supabaseH.getFile(req.params.code)
-        // console.log(data);
-        const buffer = Buffer.from(await data.arrayBuffer());
-        res.writeHead(200, {
-            "Content-Disposition": "attachment;filename=" + fileOriginalName
-        });
-        res.end(buffer)
+        if (data) {
+            const buffer = Buffer.from(await data.arrayBuffer());
+            res.writeHead(200, {
+                "Content-Disposition": "attachment;filename=" + fileOriginalName
+            });
+            res.end(buffer)
+        } else {
+            res.send("No hay nada bro")
+        }
     });
 
     server.post('/api/upload-file', upload.single('file'), async (req, res) => {

@@ -13,8 +13,9 @@ module.exports = new function () {
                 .select('ext, name')
                 .match({ id: code })
             if (error) throw error
+            if (!data[0]) return false
             fileName = code + "." + data[0].ext
-            fileOriginalName = data[0].name 
+            fileOriginalName = data[0].name
             // return data;
         } catch (err) {
             console.log(err);
