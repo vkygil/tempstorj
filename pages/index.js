@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import '../styles/Home.module.css'
-import Avatar from '../components/Avatar'
+import '../styles/Home.module.css' 
 import FileUpload from '../components/FileUpload'
 import Dropzone from '../components/Dropzone'
 import Switch from '../components/Switch'
