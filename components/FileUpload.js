@@ -11,9 +11,7 @@ export default function FileUpload() {
 
     const handleSubmission = () => {
         const formData = new FormData();
-
         formData.append('file', selectedFile);
-
         fetch(
             'http://localhost:3000/api/upload-file',
             {
