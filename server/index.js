@@ -86,8 +86,9 @@ app.prepare().then(() => {
     server.get('*', (req, res) => {
         return handle(req, res);
     });
+    let port = process.env.PORT || 3000
 
-    server.listen('3000', err => {
+    server.listen(port, err => {
         if (err) throw err;
         console.log(`> Ready on Port 8700`);
     });
