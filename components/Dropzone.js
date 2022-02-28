@@ -2,12 +2,6 @@ import { useDropzone } from 'react-dropzone'
 import { useCallback } from 'react'
 
 export default function Dropzone({ addFileToList }) {
-    const onDrop = useCallback(acceptedFiles => {
-        console.log(acceptedFiles);
-
-        uploadToClient(acceptedFiles[0])
-    }, [])
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
     const uploadToClient = (selectorFile) => {
         const formData = new FormData();
@@ -31,6 +25,12 @@ export default function Dropzone({ addFileToList }) {
                 console.error('Error:', error);
             });
     }
+    const onDrop = useCallback(acceptedFiles => {
+        console.log(acceptedFiles);
+
+        uploadToClient(acceptedFiles[0])
+    }, [])
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
     return (
         <>
