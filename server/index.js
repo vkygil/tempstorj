@@ -15,6 +15,7 @@ const upload = multer({ storage: storage });
 const { createClient } = require('@supabase/supabase-js')
 const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SECRET_SERVICE)
 var supabaseH = require('./supabaseH.js')
+let fs = require('fs');
 
 
 app.prepare().then(() => {
@@ -44,10 +45,18 @@ app.prepare().then(() => {
 
         res.send("ok api")
     });
+    server.get('/api/download-file/:code', async (req, res) => {
+        const { data, fileOriginalName } = await supabaseH.getFile(req.params.code)
+        // console.log(data);
+        const buffer = Buffer.from(await data.arrayBuffer());
+        res.writeHead(200, {
+            "Content-Disposition": "attachment;filename=" + fileOriginalName
+        });
+        res.end(buffer)
+    });
 
     server.post('/api/upload-file', upload.single('file'), async (req, res) => {
         console.log("upload atempt");
-        // console.log(req.file);
         try {
             if (!req.file) {
                 res.send({
@@ -58,13 +67,13 @@ app.prepare().then(() => {
                 let avatar = req.file;
                 var fileExt = req.file.originalname.split('.').pop();
 
-                await supabaseH.uploadFile(req.file, fileExt)
+                let id = await supabaseH.uploadFile(req.file, fileExt)
                 res.send({
                     status: true,
                     message: 'File is uploaded',
                     data: {
-                        name: avatar.name,
-                        mimetype: avatar.mimetype,
+                        name: req.file.originalname,
+                        id: id,
                         size: avatar.size
                     }
                 });
